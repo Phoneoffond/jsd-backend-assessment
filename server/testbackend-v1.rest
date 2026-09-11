@@ -8,10 +8,6 @@ GET {{baseUrl}}
 ### Read product from ID
 GET {{baseUrl}}/{{id}}
 
-
-### Search from query way
-GET {{baseUrl}}?search=iphone
-
 ### Create a new product
 POST {{baseUrl}}
 Content-Type: application/json
