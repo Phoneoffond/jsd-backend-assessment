@@ -5,7 +5,7 @@ import cors from "cors";
 
 const app = express();
 
-async function start() {
+async function startServer() {
   try {
    
     await app.listen(port, () => {
@@ -19,11 +19,9 @@ async function start() {
 }
 
 app.use(express.json());
+app.use(cors()); // เปิดใช้งานก่อน routes เพื่อให้ browser เรียก API ข้าม port ได้
 app.use("/", mainRouter);
 app.use("/api/v1", v1Router)
-
-app.use(cors()); // เปิด CORS หาก React อยู่คนละ port เพื่อเชื่มกันได้
-app.use(express.json());
 
 // Centralize error handling middleware
 app.use((err, req, res, next) => {
@@ -36,4 +34,4 @@ app.use((err, req, res, next) => {
 
 const port = 5174;
 
-start();
+startServer();
