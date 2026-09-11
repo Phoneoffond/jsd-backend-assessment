@@ -21,10 +21,21 @@ Rate yourself honestly using the scale below. This rating is not scored on its o
 | 4 | **AI generated the code, but I fully understand it.** AI generated most or all of the code, but I can explain how it works, why it works, and how the main parts connect. |
 | 5 | **AI generated the code with limited understanding.** AI generated most or all of the code, and I cannot confidently explain how or why everything works. |
 
-**My rating:** ___
+**My rating:** _5_
 
 > If you rated **2 or higher**, also complete the "AI Process" section at the end of this document.
 
+1. คัดลอกโจทย์ไปถาม AI ว่าต้องใช้เครื่องมืออะไรบ้าง
+2. สร้างข้อมูล Database แล้วส่งให้ AI ทำงาน
+3. เขียนคำสั่ง
+4. คัดลอกโค้ดมาแปะใน VS Code แล้วลอง Run ดู
+5. แก้ Error
+6. ตรวจสอบวงเล็บและชื่อไฟล์ว่ามีวงเล็บขาด/เกิน หรือชือไฟล์มี s ต่อท้ายครบหรือไม่
+7. ลองยิงข้อมูลดู
+8. แก้ Bug
+9. ลอง Run ใหม่
+10. เชค Port ว่าถูกต้อไงไหม
+11. Run ใหม่
 ---
 
 ## Backend
@@ -33,11 +44,23 @@ Rate yourself honestly using the scale below. This rating is not scored on its o
 
 *Your answer:*
 
+GET คือ การดึงข้อมูล
+
+POST คือ การสร้างข้อมูล
+
+PUT คือ การอัพเดตข้อมูล
+
+DELETE คือ การลบข่้อมูล
+
+ที่ต้องแยกเพราะมีหน้าที่ต่างกัน ถ้าสร้างข้อมูลใหม่ไปเรื่อยๆ อาจจะซ้ำหรือซ้อนทับกับข้อมูลเดิมได้ หรือบางข้อมูลที่มีความผิดพลาด ก็ควรลบออก ไม่ใช่ใส่แก้ทับชื่อเดิม เวลาดึงข้อมูลจะสับสน เช่น อีเมลเดียวกันที่มีหลาย ID และมี password หลายเวอร์ชั่น
+
 ---
 
 **2. What is `express.json()` and what would happen if you left it out?**
 
 *Your answer:*
+
+มันคือการแปลงข้อมูลให้เป็น JSON ทำให้เครื่องอ่านค่าได้ ถ้าไม่แปลงจัอ่านค่าไม่ได้
 
 ---
 
@@ -45,11 +68,17 @@ Rate yourself honestly using the scale below. This rating is not scored on its o
 
 *Your answer:*
 
+`req.body` คือ การดึงข้อมูลทั้งหมดออกมา
+`req.params` คือ การดึงข้อมูลเฉาพบางพารามิเตอร์ เช่น ดึงเฉพาะอีเมล  
+`req.query` คือ การดึงข้อมูลแบบดึงข้อมูลที่มีเนื้อหาหรือ keyword นั้นๆ ที่ถูกเก็บไว้ในฐานข้อมูล
+
 ---
 
 **4. What are HTTP status codes? List every status code you used in your API and explain why you chose it for that situation.**
 
 *Your answer:*
+
+มันคือช่องสัญญาณที่จะบอกได้ว่า ข้อมูลที่เรียกไปมีอยู่ในฐานข้อมูลรึเปล่า เรียกเจอหรือไม่ ไม่มีข้อมูลนั้นๆ ถ้าไม่มีจะขึ้น not found แต่ถ้าหาไม่เจอขะขึ้น error
 
 ---
 
@@ -57,11 +86,21 @@ Rate yourself honestly using the scale below. This rating is not scored on its o
 
 *Your answer:*
 
+GET คือ การดึงข้อมูล
+
+POST คือ การสร้างข้อมูล
+
+PUT คือ การอัพเดตข้อมูล
+
+DELETE คือ การลบข่้อมูล
+
 ---
 
 **6. Why does the order of middleware matter in Express? What could go wrong if it were in the wrong order?**
 
 *Your answer:*
+
+ที่ต้องเรียงลำดับ เพราะบางคำสั่งไม่สามารถทำงานได้ ถ้าไม่มีข้อมูลเริ่มต้น เช่น DELETE จะลบไม่ได้ ถ้ายังไม่ดึงข้อมูลผ่านการ GET ก่อน
 
 ---
 
@@ -69,17 +108,23 @@ Rate yourself honestly using the scale below. This rating is not scored on its o
 
 *Your answer:*
 
+ในเซิร์ฟเวอร์จะสร้างข้อมูลสินค้าชุดใหม่ขึ้นมาในฐานข้อมูล
+
 ---
 
 **8. What is CRUD? Map each operation to the HTTP method and route you used in your API.**
 
 *Your answer:*
 
+ใข้ตามหลังฟังก์ชั้น เช่น app.get() 
+
 ---
 
 **9. How does your API respond when something goes wrong — for example, when a product with a given ID does not exist?**
 
 *Your answer:*
+
+ถ้าหาไม่เจอขึ้น Not found ถ้าไม่มีในคำสั่งขึ้น Error
 
 ---
 
